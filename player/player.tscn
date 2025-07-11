@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://e5v48aaxxvpi"]
+
+[ext_resource type="Script" uid="uid://d35xlyhjwswam" path="res://player/Player.cs" id="1_rkbax"]
+[ext_resource type="PackedScene" uid="uid://73cohu3ykh8y" path="res://player/AnimationLibrary_Godot_Standard.glb" id="1_s3mhm"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qqgw4"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_rkbax")
+
+[node name="UniversalAnimationBiped" parent="." instance=ExtResource("1_s3mhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_qqgw4")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
